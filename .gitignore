@@ -1,0 +1,39 @@
+# Virtual environments
+.venv/
+.venv312*/
+venv/
+
+# Python cache and bytecode
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Tests and tooling
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Streamlit and local configuration
+.streamlit/secrets.toml
+.env
+.env.*
+
+# Generated reports and logs
+*.log
+logs/
+*.tmp
+*.bak
+
+# Editor and OS state
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Excel lock files
+~$*.xlsx

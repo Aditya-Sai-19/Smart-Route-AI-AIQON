@@ -1,0 +1,121 @@
+shipment_id,origin,destination,route_id,route_name,intermediate_hubs,legs,cost_usd,transit_days,delay_probability,delay_impact_days,congestion_risk,geopolitical_risk
+SHP-001,"Mumbai, India","Rotterdam, Netherlands",SHP-001-R1,Direct Express,Colombo → Salalah,Mumbai → Colombo → Salalah → Rotterdam,4043.71,18.6,0.336,2.6,76.3,15.5
+SHP-001,"Mumbai, India","Rotterdam, Netherlands",SHP-001-R2,Regional Hub,Jebel Ali → Durban,Mumbai → Jebel Ali → Durban → Rotterdam,4830.55,24.9,0.167,5.5,36.6,29.5
+SHP-001,"Mumbai, India","Rotterdam, Netherlands",SHP-001-R3,Economy Corridor,Jebel Ali,Mumbai → Jebel Ali → Rotterdam,4732.31,20.7,0.298,7.7,49.9,24.0
+SHP-001,"Mumbai, India","Rotterdam, Netherlands",SHP-001-R4,Resilient Route,Durban,Mumbai → Durban → Rotterdam,5358.77,19.3,0.066,5.2,35.6,22.6
+SHP-002,"Jebel Ali, UAE","Hamburg, Germany",SHP-002-R1,Direct Express,Jebel Ali,Jebel Ali → Jebel Ali → Hamburg,6423.62,20.0,0.4,6.6,56.2,52.6
+SHP-002,"Jebel Ali, UAE","Hamburg, Germany",SHP-002-R2,Regional Hub,Suez Canal → Tangier Med,Jebel Ali → Suez Canal → Tangier Med → Hamburg,7802.41,28.0,0.226,4.1,24.5,21.1
+SHP-002,"Jebel Ali, UAE","Hamburg, Germany",SHP-002-R3,Economy Corridor,Jebel Ali → Suez Canal → Durban,Jebel Ali → Jebel Ali → Suez Canal → Durban → Hamburg,6878.78,24.6,0.265,4.3,18.6,37.8
+SHP-002,"Jebel Ali, UAE","Hamburg, Germany",SHP-002-R4,Resilient Route,Jebel Ali,Jebel Ali → Jebel Ali → Hamburg,8549.67,22.5,0.143,6.9,30.5,29.5
+SHP-003,"Rotterdam, Netherlands","Mumbai, India",SHP-003-R1,Direct Express,Durban → Suez Canal,Rotterdam → Durban → Suez Canal → Mumbai,3986.61,14.7,0.405,3.6,39.3,49.7
+SHP-003,"Rotterdam, Netherlands","Mumbai, India",SHP-003-R2,Regional Hub,Tangier Med → Jebel Ali,Rotterdam → Tangier Med → Jebel Ali → Mumbai,4777.83,19.2,0.109,8.0,31.8,36.1
+SHP-003,"Rotterdam, Netherlands","Mumbai, India",SHP-003-R3,Economy Corridor,Algeciras,Rotterdam → Algeciras → Mumbai,4309.75,17.0,0.284,5.6,58.1,15.2
+SHP-003,"Rotterdam, Netherlands","Mumbai, India",SHP-003-R4,Resilient Route,Port Said,Rotterdam → Port Said → Mumbai,5322.32,15.8,0.128,6.1,17.1,21.1
+SHP-004,"Santos, Brazil","Antwerp, Belgium",SHP-004-R1,Direct Express,Suez Canal → Piraeus → Port Said,Santos → Suez Canal → Piraeus → Port Said → Antwerp,2979.93,19.6,0.432,7.2,75.3,26.1
+SHP-004,"Santos, Brazil","Antwerp, Belgium",SHP-004-R2,Regional Hub,Piraeus → Colombo → Tangier Med,Santos → Piraeus → Colombo → Tangier Med → Antwerp,3496.97,27.3,0.176,4.9,16.3,31.6
+SHP-004,"Santos, Brazil","Antwerp, Belgium",SHP-004-R3,Economy Corridor,Salalah,Santos → Salalah → Antwerp,3123.88,23.6,0.346,7.7,55.3,19.3
+SHP-004,"Santos, Brazil","Antwerp, Belgium",SHP-004-R4,Resilient Route,Durban,Santos → Durban → Antwerp,3729.8,22.0,0.061,7.7,32.9,27.3
+SHP-005,"Singapore, Singapore","New York, USA",SHP-005-R1,Direct Express,Algeciras → Tangier Med,Singapore → Algeciras → Tangier Med → New York,5947.99,26.9,0.289,4.6,65.9,22.3
+SHP-005,"Singapore, Singapore","New York, USA",SHP-005-R2,Regional Hub,Salalah,Singapore → Salalah → New York,7178.21,36.3,0.101,3.3,23.0,25.7
+SHP-005,"Singapore, Singapore","New York, USA",SHP-005-R3,Economy Corridor,Piraeus,Singapore → Piraeus → New York,6211.97,34.5,0.142,3.4,60.3,48.4
+SHP-005,"Singapore, Singapore","New York, USA",SHP-005-R4,Resilient Route,Jebel Ali → Durban,Singapore → Jebel Ali → Durban → New York,8004.38,30.2,0.072,6.8,38.3,21.6
+SHP-006,"Los Angeles, USA","Hamburg, Germany",SHP-006-R1,Direct Express,Port Said → Colombo → Algeciras,Los Angeles → Port Said → Colombo → Algeciras → Hamburg,2874.74,29.2,0.264,6.4,65.9,50.7
+SHP-006,"Los Angeles, USA","Hamburg, Germany",SHP-006-R2,Regional Hub,Singapore,Los Angeles → Singapore → Hamburg,3583.46,38.4,0.095,4.8,30.1,10.5
+SHP-006,"Los Angeles, USA","Hamburg, Germany",SHP-006-R3,Economy Corridor,Piraeus → Colombo → Port Said,Los Angeles → Piraeus → Colombo → Port Said → Hamburg,3304.35,34.2,0.298,7.6,57.8,12.6
+SHP-006,"Los Angeles, USA","Hamburg, Germany",SHP-006-R4,Resilient Route,Suez Canal,Los Angeles → Suez Canal → Hamburg,3946.61,31.8,0.131,4.3,15.9,16.6
+SHP-007,"Jebel Ali, UAE","Mumbai, India",SHP-007-R1,Direct Express,Jebel Ali,Jebel Ali → Jebel Ali → Mumbai,5429.13,20.8,0.446,3.8,54.8,53.5
+SHP-007,"Jebel Ali, UAE","Mumbai, India",SHP-007-R2,Regional Hub,Durban → Piraeus → Suez Canal,Jebel Ali → Durban → Piraeus → Suez Canal → Mumbai,6906.1,27.1,0.163,2.3,37.7,7.7
+SHP-007,"Jebel Ali, UAE","Mumbai, India",SHP-007-R3,Economy Corridor,Port Said → Jebel Ali,Jebel Ali → Port Said → Jebel Ali → Mumbai,5983.54,25.0,0.099,5.5,18.4,48.5
+SHP-007,"Jebel Ali, UAE","Mumbai, India",SHP-007-R4,Resilient Route,Jebel Ali → Tangier Med,Jebel Ali → Jebel Ali → Tangier Med → Mumbai,6765.54,21.0,0.16,3.4,26.8,14.2
+SHP-008,"Jebel Ali, UAE","New York, USA",SHP-008-R1,Direct Express,Port Said → Salalah → Jebel Ali,Jebel Ali → Port Said → Salalah → Jebel Ali → New York,6872.76,28.1,0.362,5.0,23.8,37.8
+SHP-008,"Jebel Ali, UAE","New York, USA",SHP-008-R2,Regional Hub,Piraeus → Singapore,Jebel Ali → Piraeus → Singapore → New York,8031.52,38.5,0.071,5.7,19.6,15.4
+SHP-008,"Jebel Ali, UAE","New York, USA",SHP-008-R3,Economy Corridor,Port Said → Suez Canal → Singapore,Jebel Ali → Port Said → Suez Canal → Singapore → New York,8131.07,35.6,0.082,2.7,55.9,22.1
+SHP-008,"Jebel Ali, UAE","New York, USA",SHP-008-R4,Resilient Route,Singapore,Jebel Ali → Singapore → New York,8768.36,32.4,0.095,5.0,28.0,25.9
+SHP-009,"Santos, Brazil","Rotterdam, Netherlands",SHP-009-R1,Direct Express,Suez Canal → Durban,Santos → Suez Canal → Durban → Rotterdam,2839.0,27.9,0.104,5.3,68.6,48.6
+SHP-009,"Santos, Brazil","Rotterdam, Netherlands",SHP-009-R2,Regional Hub,Colombo → Tangier Med → Suez Canal,Santos → Colombo → Tangier Med → Suez Canal → Rotterdam,3389.13,36.9,0.072,4.6,42.6,36.3
+SHP-009,"Santos, Brazil","Rotterdam, Netherlands",SHP-009-R3,Economy Corridor,Jebel Ali → Salalah,Santos → Jebel Ali → Salalah → Rotterdam,2953.9,34.4,0.332,6.0,63.6,9.9
+SHP-009,"Santos, Brazil","Rotterdam, Netherlands",SHP-009-R4,Resilient Route,Suez Canal,Santos → Suez Canal → Rotterdam,3678.65,32.4,0.196,7.9,39.5,26.8
+SHP-010,"Singapore, Singapore","Mumbai, India",SHP-010-R1,Direct Express,Singapore,Singapore → Singapore → Mumbai,2446.16,16.1,0.424,3.0,70.5,62.2
+SHP-010,"Singapore, Singapore","Mumbai, India",SHP-010-R2,Regional Hub,Tangier Med → Singapore,Singapore → Tangier Med → Singapore → Mumbai,2906.7,22.1,0.065,6.9,27.7,12.5
+SHP-010,"Singapore, Singapore","Mumbai, India",SHP-010-R3,Economy Corridor,Singapore,Singapore → Singapore → Mumbai,2710.5,19.3,0.258,4.1,34.9,21.1
+SHP-010,"Singapore, Singapore","Mumbai, India",SHP-010-R4,Resilient Route,Suez Canal → Singapore,Singapore → Suez Canal → Singapore → Mumbai,3111.96,18.8,0.191,2.2,19.6,5.8
+SHP-011,"Jebel Ali, UAE","Antwerp, Belgium",SHP-011-R1,Direct Express,Algeciras,Jebel Ali → Algeciras → Antwerp,7394.96,21.7,0.142,2.0,76.8,21.7
+SHP-011,"Jebel Ali, UAE","Antwerp, Belgium",SHP-011-R2,Regional Hub,Algeciras → Port Said,Jebel Ali → Algeciras → Port Said → Antwerp,9345.48,28.1,0.197,7.7,37.5,28.5
+SHP-011,"Jebel Ali, UAE","Antwerp, Belgium",SHP-011-R3,Economy Corridor,Singapore → Algeciras → Tangier Med,Jebel Ali → Singapore → Algeciras → Tangier Med → Antwerp,8539.75,25.4,0.259,4.4,21.2,50.3
+SHP-011,"Jebel Ali, UAE","Antwerp, Belgium",SHP-011-R4,Resilient Route,Salalah,Jebel Ali → Salalah → Antwerp,9499.41,22.0,0.12,5.4,38.5,24.7
+SHP-012,"Jebel Ali, UAE","Rotterdam, Netherlands",SHP-012-R1,Direct Express,Jebel Ali → Piraeus → Durban,Jebel Ali → Jebel Ali → Piraeus → Durban → Rotterdam,4237.63,20.4,0.312,6.8,39.8,36.8
+SHP-012,"Jebel Ali, UAE","Rotterdam, Netherlands",SHP-012-R2,Regional Hub,Tangier Med → Port Said → Jebel Ali,Jebel Ali → Tangier Med → Port Said → Jebel Ali → Rotterdam,5527.51,27.6,0.186,6.0,21.0,28.2
+SHP-012,"Jebel Ali, UAE","Rotterdam, Netherlands",SHP-012-R3,Economy Corridor,Durban,Jebel Ali → Durban → Rotterdam,4631.18,23.1,0.087,4.5,27.2,30.3
+SHP-012,"Jebel Ali, UAE","Rotterdam, Netherlands",SHP-012-R4,Resilient Route,Colombo → Port Said → Algeciras,Jebel Ali → Colombo → Port Said → Algeciras → Rotterdam,5826.69,21.3,0.166,3.3,24.6,12.1
+SHP-013,"Busan, South Korea","Rotterdam, Netherlands",SHP-013-R1,Direct Express,Salalah → Tangier Med → Durban,Busan → Salalah → Tangier Med → Durban → Rotterdam,6529.58,17.2,0.148,5.7,48.9,42.2
+SHP-013,"Busan, South Korea","Rotterdam, Netherlands",SHP-013-R2,Regional Hub,Durban → Salalah → Singapore,Busan → Durban → Salalah → Singapore → Rotterdam,7614.52,24.7,0.219,6.5,30.5,36.1
+SHP-013,"Busan, South Korea","Rotterdam, Netherlands",SHP-013-R3,Economy Corridor,Port Said → Singapore,Busan → Port Said → Singapore → Rotterdam,7060.01,21.4,0.29,3.4,39.2,19.2
+SHP-013,"Busan, South Korea","Rotterdam, Netherlands",SHP-013-R4,Resilient Route,Jebel Ali,Busan → Jebel Ali → Rotterdam,7965.83,21.2,0.063,2.4,14.0,16.1
+SHP-014,"Jebel Ali, UAE","Antwerp, Belgium",SHP-014-R1,Direct Express,Colombo → Algeciras → Durban,Jebel Ali → Colombo → Algeciras → Durban → Antwerp,6049.83,22.9,0.248,2.0,77.1,45.4
+SHP-014,"Jebel Ali, UAE","Antwerp, Belgium",SHP-014-R2,Regional Hub,Piraeus → Jebel Ali → Durban,Jebel Ali → Piraeus → Jebel Ali → Durban → Antwerp,7162.53,33.5,0.224,3.3,45.1,19.9
+SHP-014,"Jebel Ali, UAE","Antwerp, Belgium",SHP-014-R3,Economy Corridor,Durban,Jebel Ali → Durban → Antwerp,6615.86,27.4,0.171,7.5,49.0,27.0
+SHP-014,"Jebel Ali, UAE","Antwerp, Belgium",SHP-014-R4,Resilient Route,Algeciras,Jebel Ali → Algeciras → Antwerp,8447.48,26.8,0.201,2.8,27.6,24.3
+SHP-015,"Busan, South Korea","New York, USA",SHP-015-R1,Direct Express,Singapore → Port Said,Busan → Singapore → Port Said → New York,2524.52,18.2,0.215,4.8,67.9,33.0
+SHP-015,"Busan, South Korea","New York, USA",SHP-015-R2,Regional Hub,Colombo → Salalah → Jebel Ali,Busan → Colombo → Salalah → Jebel Ali → New York,3147.89,24.4,0.243,3.2,18.9,8.1
+SHP-015,"Busan, South Korea","New York, USA",SHP-015-R3,Economy Corridor,Durban,Busan → Durban → New York,2633.72,22.0,0.114,6.2,48.5,34.5
+SHP-015,"Busan, South Korea","New York, USA",SHP-015-R4,Resilient Route,Singapore,Busan → Singapore → New York,3454.87,20.3,0.151,2.6,32.5,8.3
+SHP-016,"Shanghai, China","Mumbai, India",SHP-016-R1,Direct Express,Jebel Ali → Port Said → Singapore,Shanghai → Jebel Ali → Port Said → Singapore → Mumbai,6661.0,29.1,0.428,7.1,31.9,45.9
+SHP-016,"Shanghai, China","Mumbai, India",SHP-016-R2,Regional Hub,Tangier Med → Port Said,Shanghai → Tangier Med → Port Said → Mumbai,7668.1,38.5,0.249,5.0,39.0,17.5
+SHP-016,"Shanghai, China","Mumbai, India",SHP-016-R3,Economy Corridor,Durban → Suez Canal → Algeciras,Shanghai → Durban → Suez Canal → Algeciras → Mumbai,6795.38,37.5,0.302,3.1,20.3,53.2
+SHP-016,"Shanghai, China","Mumbai, India",SHP-016-R4,Resilient Route,Algeciras → Singapore,Shanghai → Algeciras → Singapore → Mumbai,8320.06,33.7,0.153,3.9,37.8,27.5
+SHP-017,"Los Angeles, USA","Hamburg, Germany",SHP-017-R1,Direct Express,Suez Canal → Durban,Los Angeles → Suez Canal → Durban → Hamburg,4080.52,23.7,0.313,3.3,43.5,12.0
+SHP-017,"Los Angeles, USA","Hamburg, Germany",SHP-017-R2,Regional Hub,Piraeus,Los Angeles → Piraeus → Hamburg,5202.73,31.9,0.229,7.7,36.0,15.1
+SHP-017,"Los Angeles, USA","Hamburg, Germany",SHP-017-R3,Economy Corridor,Durban → Salalah → Colombo,Los Angeles → Durban → Salalah → Colombo → Hamburg,4364.26,29.8,0.212,2.6,52.9,40.5
+SHP-017,"Los Angeles, USA","Hamburg, Germany",SHP-017-R4,Resilient Route,Tangier Med → Algeciras → Salalah,Los Angeles → Tangier Med → Algeciras → Salalah → Hamburg,5317.8,27.3,0.101,4.1,27.3,18.8
+SHP-018,"Busan, South Korea","Mumbai, India",SHP-018-R1,Direct Express,Suez Canal → Jebel Ali → Piraeus,Busan → Suez Canal → Jebel Ali → Piraeus → Mumbai,4267.09,19.4,0.211,6.4,66.7,67.4
+SHP-018,"Busan, South Korea","Mumbai, India",SHP-018-R2,Regional Hub,Singapore,Busan → Singapore → Mumbai,5120.43,26.0,0.205,3.4,32.3,38.9
+SHP-018,"Busan, South Korea","Mumbai, India",SHP-018-R3,Economy Corridor,Singapore → Suez Canal → Durban,Busan → Singapore → Suez Canal → Durban → Mumbai,4625.51,21.7,0.224,2.6,28.7,53.8
+SHP-018,"Busan, South Korea","Mumbai, India",SHP-018-R4,Resilient Route,Durban → Port Said,Busan → Durban → Port Said → Mumbai,5425.37,20.6,0.13,6.9,19.9,33.1
+SHP-019,"Jebel Ali, UAE","Dubai, UAE",SHP-019-R1,Direct Express,Port Said,Jebel Ali → Port Said → Dubai,2775.74,25.6,0.154,5.3,55.2,28.5
+SHP-019,"Jebel Ali, UAE","Dubai, UAE",SHP-019-R2,Regional Hub,Singapore → Algeciras,Jebel Ali → Singapore → Algeciras → Dubai,3228.49,37.4,0.178,3.8,38.7,18.6
+SHP-019,"Jebel Ali, UAE","Dubai, UAE",SHP-019-R3,Economy Corridor,Singapore,Jebel Ali → Singapore → Dubai,3025.06,33.4,0.28,6.0,62.4,17.8
+SHP-019,"Jebel Ali, UAE","Dubai, UAE",SHP-019-R4,Resilient Route,Durban → Singapore → Colombo,Jebel Ali → Durban → Singapore → Colombo → Dubai,3424.91,29.2,0.062,3.4,9.4,18.1
+SHP-020,"Santos, Brazil","Dubai, UAE",SHP-020-R1,Direct Express,Algeciras,Santos → Algeciras → Dubai,2626.25,28.7,0.376,2.7,56.9,58.6
+SHP-020,"Santos, Brazil","Dubai, UAE",SHP-020-R2,Regional Hub,Salalah → Singapore,Santos → Salalah → Singapore → Dubai,3130.25,38.6,0.109,4.6,15.9,7.8
+SHP-020,"Santos, Brazil","Dubai, UAE",SHP-020-R3,Economy Corridor,Port Said → Colombo,Santos → Port Said → Colombo → Dubai,2948.56,35.2,0.189,7.3,28.6,33.4
+SHP-020,"Santos, Brazil","Dubai, UAE",SHP-020-R4,Resilient Route,Salalah → Colombo → Singapore,Santos → Salalah → Colombo → Singapore → Dubai,3645.23,33.5,0.054,5.5,16.4,24.6
+SHP-021,"Singapore, Singapore","Mumbai, India",SHP-021-R1,Direct Express,Durban,Singapore → Durban → Mumbai,5899.7,27.9,0.447,4.1,47.1,59.2
+SHP-021,"Singapore, Singapore","Mumbai, India",SHP-021-R2,Regional Hub,Algeciras → Piraeus,Singapore → Algeciras → Piraeus → Mumbai,6946.76,40.0,0.224,2.2,22.7,29.2
+SHP-021,"Singapore, Singapore","Mumbai, India",SHP-021-R3,Economy Corridor,Piraeus,Singapore → Piraeus → Mumbai,6160.59,34.0,0.111,4.8,53.6,48.7
+SHP-021,"Singapore, Singapore","Mumbai, India",SHP-021-R4,Resilient Route,Jebel Ali,Singapore → Jebel Ali → Mumbai,7348.33,32.3,0.154,3.6,24.8,17.8
+SHP-022,"Singapore, Singapore","New York, USA",SHP-022-R1,Direct Express,Piraeus → Colombo,Singapore → Piraeus → Colombo → New York,5348.49,28.6,0.32,5.3,70.4,52.9
+SHP-022,"Singapore, Singapore","New York, USA",SHP-022-R2,Regional Hub,Durban,Singapore → Durban → New York,6081.35,43.9,0.235,7.6,27.4,9.7
+SHP-022,"Singapore, Singapore","New York, USA",SHP-022-R3,Economy Corridor,Piraeus → Suez Canal,Singapore → Piraeus → Suez Canal → New York,5699.44,37.9,0.192,4.3,39.1,30.2
+SHP-022,"Singapore, Singapore","New York, USA",SHP-022-R4,Resilient Route,Tangier Med → Piraeus,Singapore → Tangier Med → Piraeus → New York,7356.84,34.1,0.197,3.6,36.1,13.0
+SHP-023,"Shanghai, China","Mumbai, India",SHP-023-R1,Direct Express,Tangier Med → Salalah,Shanghai → Tangier Med → Salalah → Mumbai,7734.39,19.9,0.33,5.3,74.6,37.1
+SHP-023,"Shanghai, China","Mumbai, India",SHP-023-R2,Regional Hub,Algeciras → Jebel Ali → Salalah,Shanghai → Algeciras → Jebel Ali → Salalah → Mumbai,8915.57,26.7,0.12,2.3,17.6,29.4
+SHP-023,"Shanghai, China","Mumbai, India",SHP-023-R3,Economy Corridor,Suez Canal → Durban → Colombo,Shanghai → Suez Canal → Durban → Colombo → Mumbai,8347.24,24.6,0.299,2.8,34.3,39.2
+SHP-023,"Shanghai, China","Mumbai, India",SHP-023-R4,Resilient Route,Colombo → Suez Canal,Shanghai → Colombo → Suez Canal → Mumbai,10256.51,21.6,0.066,4.5,35.5,7.9
+SHP-024,"Singapore, Singapore","Rotterdam, Netherlands",SHP-024-R1,Direct Express,Algeciras → Tangier Med → Durban,Singapore → Algeciras → Tangier Med → Durban → Rotterdam,5476.29,19.3,0.327,7.2,73.7,61.5
+SHP-024,"Singapore, Singapore","Rotterdam, Netherlands",SHP-024-R2,Regional Hub,Port Said → Algeciras → Salalah,Singapore → Port Said → Algeciras → Salalah → Rotterdam,6292.21,24.4,0.18,6.6,44.0,39.5
+SHP-024,"Singapore, Singapore","Rotterdam, Netherlands",SHP-024-R3,Economy Corridor,Colombo → Singapore,Singapore → Colombo → Singapore → Rotterdam,6241.22,21.9,0.125,4.2,30.0,9.4
+SHP-024,"Singapore, Singapore","Rotterdam, Netherlands",SHP-024-R4,Resilient Route,Port Said,Singapore → Port Said → Rotterdam,7237.2,20.5,0.119,5.7,30.4,10.2
+SHP-025,"Jebel Ali, UAE","Singapore, Singapore",SHP-025-R1,Direct Express,Singapore → Piraeus,Jebel Ali → Singapore → Piraeus → Singapore,5539.05,26.9,0.19,2.9,35.5,10.8
+SHP-025,"Jebel Ali, UAE","Singapore, Singapore",SHP-025-R2,Regional Hub,Durban → Singapore,Jebel Ali → Durban → Singapore → Singapore,6856.52,36.3,0.172,3.2,33.8,20.1
+SHP-025,"Jebel Ali, UAE","Singapore, Singapore",SHP-025-R3,Economy Corridor,Singapore → Colombo → Algeciras,Jebel Ali → Singapore → Colombo → Algeciras → Singapore,6225.61,32.9,0.144,3.6,43.6,35.0
+SHP-025,"Jebel Ali, UAE","Singapore, Singapore",SHP-025-R4,Resilient Route,Singapore → Jebel Ali,Jebel Ali → Singapore → Jebel Ali → Singapore,7622.23,31.0,0.174,5.6,10.8,22.6
+SHP-026,"Rotterdam, Netherlands","New York, USA",SHP-026-R1,Direct Express,Port Said → Colombo → Singapore,Rotterdam → Port Said → Colombo → Singapore → New York,6887.69,17.6,0.352,6.7,61.4,60.7
+SHP-026,"Rotterdam, Netherlands","New York, USA",SHP-026-R2,Regional Hub,Suez Canal → Jebel Ali,Rotterdam → Suez Canal → Jebel Ali → New York,7647.14,23.1,0.083,2.8,43.5,16.8
+SHP-026,"Rotterdam, Netherlands","New York, USA",SHP-026-R3,Economy Corridor,Durban → Singapore,Rotterdam → Durban → Singapore → New York,7441.42,22.2,0.223,6.5,60.7,47.0
+SHP-026,"Rotterdam, Netherlands","New York, USA",SHP-026-R4,Resilient Route,Algeciras → Piraeus → Tangier Med,Rotterdam → Algeciras → Piraeus → Tangier Med → New York,8700.53,18.4,0.211,2.5,13.7,33.1
+SHP-027,"Jebel Ali, UAE","Rotterdam, Netherlands",SHP-027-R1,Direct Express,Tangier Med → Port Said → Jebel Ali,Jebel Ali → Tangier Med → Port Said → Jebel Ali → Rotterdam,3920.61,25.8,0.361,4.8,36.0,33.2
+SHP-027,"Jebel Ali, UAE","Rotterdam, Netherlands",SHP-027-R2,Regional Hub,Durban → Singapore → Algeciras,Jebel Ali → Durban → Singapore → Algeciras → Rotterdam,4969.58,37.7,0.121,2.7,32.8,27.7
+SHP-027,"Jebel Ali, UAE","Rotterdam, Netherlands",SHP-027-R3,Economy Corridor,Suez Canal → Algeciras → Durban,Jebel Ali → Suez Canal → Algeciras → Durban → Rotterdam,4234.97,30.2,0.349,4.2,20.8,19.0
+SHP-027,"Jebel Ali, UAE","Rotterdam, Netherlands",SHP-027-R4,Resilient Route,Port Said → Durban,Jebel Ali → Port Said → Durban → Rotterdam,5655.26,30.1,0.14,5.7,27.5,26.1
+SHP-028,"Santos, Brazil","Rotterdam, Netherlands",SHP-028-R1,Direct Express,Piraeus → Tangier Med,Santos → Piraeus → Tangier Med → Rotterdam,6932.07,21.2,0.184,2.4,42.4,69.3
+SHP-028,"Santos, Brazil","Rotterdam, Netherlands",SHP-028-R2,Regional Hub,Salalah,Santos → Salalah → Rotterdam,8331.44,30.8,0.242,7.8,40.5,8.9
+SHP-028,"Santos, Brazil","Rotterdam, Netherlands",SHP-028-R3,Economy Corridor,Jebel Ali → Salalah → Piraeus,Santos → Jebel Ali → Salalah → Piraeus → Rotterdam,7405.68,25.5,0.347,4.0,54.3,17.6
+SHP-028,"Santos, Brazil","Rotterdam, Netherlands",SHP-028-R4,Resilient Route,Piraeus,Santos → Piraeus → Rotterdam,8980.51,25.1,0.05,3.5,35.9,9.2
+SHP-029,"Singapore, Singapore","Rotterdam, Netherlands",SHP-029-R1,Direct Express,Colombo → Suez Canal,Singapore → Colombo → Suez Canal → Rotterdam,6657.45,12.1,0.375,6.5,56.9,11.2
+SHP-029,"Singapore, Singapore","Rotterdam, Netherlands",SHP-029-R2,Regional Hub,Durban,Singapore → Durban → Rotterdam,8336.76,17.3,0.15,5.0,38.8,23.1
+SHP-029,"Singapore, Singapore","Rotterdam, Netherlands",SHP-029-R3,Economy Corridor,Colombo → Salalah,Singapore → Colombo → Salalah → Rotterdam,8004.53,14.2,0.291,8.0,58.3,32.5
+SHP-029,"Singapore, Singapore","Rotterdam, Netherlands",SHP-029-R4,Resilient Route,Tangier Med,Singapore → Tangier Med → Rotterdam,9481.59,13.7,0.068,5.6,31.4,17.9
+SHP-030,"Mumbai, India","Hamburg, Germany",SHP-030-R1,Direct Express,Piraeus → Algeciras,Mumbai → Piraeus → Algeciras → Hamburg,4248.54,28.0,0.215,2.6,82.9,42.2
+SHP-030,"Mumbai, India","Hamburg, Germany",SHP-030-R2,Regional Hub,Algeciras,Mumbai → Algeciras → Hamburg,5110.42,39.7,0.184,4.7,38.5,30.2
+SHP-030,"Mumbai, India","Hamburg, Germany",SHP-030-R3,Economy Corridor,Tangier Med → Singapore,Mumbai → Tangier Med → Singapore → Hamburg,4413.29,33.3,0.202,4.2,35.8,12.5
+SHP-030,"Mumbai, India","Hamburg, Germany",SHP-030-R4,Resilient Route,Tangier Med,Mumbai → Tangier Med → Hamburg,5237.01,32.9,0.061,6.9,35.1,7.7

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SmartRoute AI - Technical Report</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Segoe UI", Calibri, Arial, sans-serif;
+    color: #1e293b;
+    font-size: 8.6pt;
+    line-height: 1.32;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .page {
+    width: 210mm; height: 297mm;
+    padding: 12mm 15mm 9mm;
+    display: flex; flex-direction: column;
+    page-break-after: always;
+    overflow: hidden;
+  }
+  .page:last-of-type { page-break-after: auto; }
+  .foot {
+    margin-top: auto;
+    border-top: 0.4pt solid #e2e8f0;
+    padding-top: 2mm;
+    font-size: 7.4pt; color: #64748b;
+    display: flex; justify-content: space-between;
+  }
+  .kicker { color: #0f766e; font-size: 7.4pt; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+  h1 { font-size: 17pt; line-height: 1.2; margin: 1.5mm 0 1mm; color: #0f172a; letter-spacing: -.01em; }
+  .sub { font-size: 10pt; color: #475569; margin: 0 0 2mm; }
+  .meta { font-size: 7.8pt; color: #64748b; border-bottom: 1.2pt solid #0f172a; padding-bottom: 2.5mm; margin-bottom: 4mm; }
+  h2 { font-size: 10.2pt; color: #0f172a; margin: 2.9mm 0 1.2mm; letter-spacing: -.005em; }
+  h2 .num { color: #0f766e; margin-right: 1.4mm; }
+  h3 { font-size: 8.9pt; color: #0f172a; margin: 1.7mm 0 0.7mm; }
+  p { margin: 0 0 1.3mm; text-align: justify; }
+  ul, ol { margin: 0 0 1.8mm; padding-left: 4.2mm; }
+  li { margin-bottom: 0.7mm; }
+  strong { color: #0f172a; }
+  code { font-family: Consolas, "Courier New", monospace; font-size: 8.4pt; color: #0f172a; }
+  .formula {
+    font-family: "Cambria Math", Cambria, Georgia, serif;
+    font-size: 9.4pt;
+    background: #f4f9f8;
+    border-left: 2.4pt solid #0f766e;
+    padding: 1.6mm 3mm;
+    margin: 1.2mm 0 2mm;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 7.9pt; margin: 0.8mm 0 1.3mm; }
+  th { text-align: left; background: #f1f5f9; color: #0f172a; font-weight: 600; padding: 1mm 1.5mm; border-bottom: 0.6pt solid #cbd5e1; }
+  td { padding: 0.9mm 1.5mm; border-bottom: 0.4pt solid #e2e8f0; vertical-align: top; }
+  td.n, th.n { text-align: right; }
+  td.mono { font-family: Consolas, "Courier New", monospace; font-size: 7.8pt; }
+  figcaption { font-size: 7.4pt; color: #64748b; margin-top: 1mm; }
+  .diagram { margin: 1mm 0 2.4mm; }
+  .chain { display: flex; align-items: stretch; gap: 1.1mm; }
+  .node {
+    flex: 1 1 0;
+    background: #f1f5f9; border: 0.5pt solid #cbd5e1; border-radius: 1.6mm;
+    padding: 1.4mm 1.2mm; text-align: center;
+    font-size: 6.7pt; line-height: 1.18; color: #0f172a; font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .node.key { background: #0f766e; border-color: #0f766e; color: #fff; }
+  .arrow { align-self: center; color: #94a3b8; font-size: 8.5pt; }
+  .branch {
+    margin: 1.2mm 0 0 0; padding-left: 3mm;
+    border-left: 1.2pt dotted #0f766e;
+    font-size: 7.6pt; color: #475569;
+  }
+  .cols { display: flex; gap: 5mm; }
+  .cols > div { flex: 1; }
+  .note { font-size: 8pt; color: #475569; font-style: italic; }
+  .figure { margin: 0.8mm 0 1mm; }
+  .figure img { width: 100%; border: 0.5pt solid #e2e8f0; border-radius: 1mm; }
+  .tight li { margin-bottom: 0.5mm; }
+  .kv { font-size: 8.4pt; color: #334155; }
+  .badge { display: inline-block; background: #ecfdf5; color: #047857; border: 0.5pt solid #a7f3d0; border-radius: 2mm; padding: 0 1.4mm; font-size: 6.8pt; font-weight: 600; }
+  .lim { columns: 2; column-gap: 6mm; }
+  .lim div { break-inside: avoid; margin-bottom: 0.7mm; font-size: 8pt; }
+</style>
+</head>
+<body>
+
+<!-- ============================ PAGE 1 ============================ -->
+<section class="page">
+  <div class="kicker">Technical Report</div>
+  <h1>SmartRoute AI: Shipment Route Optimization Under Cost, Time and Risk Constraints</h1>
+  <p class="sub">Multi-objective route selection with hard constraints, Pareto analysis, and Monte Carlo reliability evidence.</p>
+  <div class="meta">
+    Decision-support prototype &nbsp;·&nbsp; Python 3.12, pandas, NumPy, Streamlit, Plotly
+    &nbsp;·&nbsp; Dataset: 30 shipments, 120 route options &nbsp;·&nbsp; November 2026
+  </div>
+
+  <h2><span class="num">1</span>Problem statement</h2>
+  <p>
+    A shipment between two hubs usually has more than one viable routing: a direct service,
+    a regional consolidation, an economy corridor, or a costlier resilient option. The options
+    trade off against each other. A faster route can cost more and carry higher delay exposure.
+    A cheaper route can be slower or riskier. A safer route can consume budget or calendar time
+    the shipment does not have.
+  </p>
+  <p>
+    Choosing the lowest freight cost alone ignores commitments that are often more expensive to
+    break than the freight bill: a late delivery, an unreliable corridor, or risk concentrated in
+    one congested port. Planners therefore compare alternatives on several objectives at once,
+    under a budget and a delivery target, and need to explain the choice to someone else.
+  </p>
+  <p>
+    SmartRoute AI is a decision-support prototype for that comparison. Given one shipment's
+    candidate routes and a planner's priorities, it answers two linked questions: which feasible
+    route best matches the weighted priorities, and how uncertain is that route's delivery time
+    under an explicit delay model. The scope is deliberately narrow — it evaluates existing route
+    options for one shipment at a time, and does not generate maritime paths, price real freight,
+    or predict risk from live data.
+  </p>
+
+  <h2><span class="num">2</span>Proposed solution</h2>
+  <p>
+    The deterministic optimizer (<code>src/optimizer.py</code>) computes three objective values per
+    route, removes routes that violate hard constraints, min-max normalizes the remaining metrics,
+    and ranks them with stakeholder weights. Pareto analysis runs on the same feasible set, so the
+    planner can see whether the weighted winner is genuinely non-dominated. A separate Monte Carlo
+    engine (<code>src/simulation.py</code>) provides reliability evidence and never alters scores,
+    ranks, or constraint outcomes. The Streamlit dashboard (<code>app.py</code>) and the CLI
+    (<code>main.py</code>) are thin clients over those two modules.
+  </p>
+
+  <div class="diagram">
+    <div class="chain">
+      <div class="node">Shipment data</div><div class="arrow">→</div>
+      <div class="node">Validation</div><div class="arrow">→</div>
+      <div class="node">Feature calculation</div><div class="arrow">→</div>
+      <div class="node">Constraint filtering</div><div class="arrow">→</div>
+      <div class="node key">Weighted optimization</div><div class="arrow">→</div>
+      <div class="node">Pareto analysis</div><div class="arrow">→</div>
+      <div class="node">Recommendation</div>
+    </div>
+    <div class="branch">
+      <strong>Monte Carlo reliability</strong> runs after feature calculation on the same route rows:
+      10,000 trials per route → mean, P50, P90, P95 and on-time probability. It is an additional
+      evaluation branch, not part of the ranking.
+    </div>
+  </div>
+
+  <p>
+    <code>src/data_generator.py</code> produces and validates the synthetic dataset once; both
+    clients read the same CSV, so every figure in this report can be regenerated from the
+    repository with the commands in Section 11.
+  </p>
+
+  <figure class="figure" style="text-align:center">
+    <img src="screenshots/01-overview.png" alt="Dashboard overview for SHP-001" style="width:76%">
+    <figcaption>Figure 1. Dashboard overview for SHP-001: network metrics, the recommended route, and the explanation generated from the evaluation table.</figcaption>
+  </figure>
+
+  <h2><span class="num">3</span>Technical stack</h2>
+  <table>
+    <tr><th style="width:26%">Technology</th><th>Role in this project</th></tr>
+    <tr><td>Python 3.12</td><td>Implementation language for the optimizer, simulator, and clients</td></tr>
+    <tr><td>pandas</td><td>Dataset validation, route evaluation, ranking, and summary statistics</td></tr>
+    <tr><td>NumPy</td><td>Vectorized trial generation and percentile estimation</td></tr>
+    <tr><td>Streamlit</td><td>Four-tab interactive dashboard, plus <code>AppTest</code> integration tests</td></tr>
+    <tr><td>Plotly</td><td>Six chart types: scatter, ranking bars, risk bars, histogram, on-time bars, and profile bars</td></tr>
+    <tr><td>pytest</td><td>110 tests for formulas, constraints, simulation, dataset rules, and the dashboard</td></tr>
+  </table>
+  <p class="note">
+    No machine-learning framework, database, or external API is used. Five packages are installed
+    from <code>requirements.txt</code>; everything runs offline.
+  </p>
+
+  <div class="foot"><span>SmartRoute AI · Technical Report</span><span>Page 1 of 3</span></div>
+</section>
+
+<!-- ============================ PAGE 2 ============================ -->
+<section class="page">
+  <h2><span class="num">4</span>Expected transit time</h2>
+  <p>The optimizer adds expected delay to the scheduled transit time of each route:</p>
+  <div class="formula">expected_transit_days = transit_days + delay_probability × delay_impact_days</div>
+  <p>
+    <code>delay_probability</code> is the assumed chance that the route is delayed at all;
+    <code>delay_impact_days</code> is the assumed length of that delay. For SHP-001-R1
+    (Direct Express): 18.6 + 0.336 × 2.6 = <strong>19.47 days</strong>. This estimate drives constraint filtering and ranking; its distribution is left to the simulation layer.
+  </p>
+
+  <h2><span class="num">5</span>Risk calculation</h2>
+  <p>Composite operational risk is a 0–100 indicator built from three assumed inputs:</p>
+  <div class="formula">risk_score = 0.45 × delay_probability × 100 + 0.30 × congestion_risk + 0.25 × geopolitical_risk</div>
+  <p>
+    The result is clipped to [0, 100]. For SHP-001-R1: 0.45 × 33.6 + 0.30 × 76.3 + 0.25 × 15.5 =
+    <strong>41.9</strong>. Delay probability receives the largest weight because schedule uncertainty
+    directly affects delivery commitments. Congestion is next because it drives variability at ports
+    and corridors. Geopolitical exposure is weighted lowest because it is rarer and less directly
+    observable. The weights are module constants; the score is a decision-support index, not a
+    probability of failure, and it is not calibrated against historical events.
+  </p>
+
+  <h2><span class="num">6</span>Multi-objective optimization</h2>
+
+  <h3>Min-max normalization</h3>
+  <p>
+    Within one shipment's feasible set, each metric becomes <code>(value − min) / (max − min)</code>.
+    The best route scores 0, the worst 1. If all values are equal, every normalized value is 0: the code
+    divides only when <code>max &gt; min</code>, so equal metrics never produce a division by zero or a
+    <code>NaN</code>.
+  </p>
+
+  <h3>Weights and score</h3>
+  <div class="formula">score = w<sub>cost</sub> · cost<sub>norm</sub> + w<sub>time</sub> · time<sub>norm</sub> + w<sub>risk</sub> · risk<sub>norm</sub> &nbsp;&nbsp;(lower is better)</div>
+  <p>
+    Weights are validated (numeric, finite, non-negative, known keys, one positive value minimum) and
+    normalized to sum to 1. The default Balanced profile is 40% cost, 35% time, 25% risk.
+  </p>
+  <table>
+    <tr><th>Profile</th><th class="n">Cost</th><th class="n">Time</th><th class="n">Risk</th><th>Intended priority</th></tr>
+    <tr><td>Cost focused</td><td class="n">70%</td><td class="n">20%</td><td class="n">10%</td><td>Procurement savings</td></tr>
+    <tr><td>Balanced</td><td class="n">40%</td><td class="n">35%</td><td class="n">25%</td><td>Default planning view</td></tr>
+    <tr><td>Risk averse</td><td class="n">15%</td><td class="n">20%</td><td class="n">65%</td><td>Commitment-sensitive lanes</td></tr>
+    <tr><td>Time critical</td><td class="n">15%</td><td class="n">70%</td><td class="n">15%</td><td>Expedited or perishable freight</td></tr>
+  </table>
+
+  <h3>Hard constraints</h3>
+  <p>
+    A route is feasible only if <code>cost_usd ≤ budget</code> and
+    <code>expected_transit_days ≤ deadline</code>; both limits are inclusive and either may be
+    disabled. Infeasible routes stay visible for comparison but receive no score, no rank, no Pareto
+    status, and can never be recommended. If nothing is feasible, the application reports how many
+    routes failed each constraint, the cheapest cost and fastest time available, and which limit to
+    review.
+  </p>
+
+  <h3>Ranking, ties, and Pareto optimality</h3>
+  <p>
+    Feasible routes are sorted by score, then by cost; equal scores use a deterministic
+    <code>method="first"</code> tie-break so output is stable across runs. Among feasible routes, a
+    route is Pareto-optimal if no other route is at least as good on cost, expected time, and risk
+    and strictly better on at least one. Identical routes do not dominate each other. Pareto status
+    and rank answer different questions: a weighted winner can be dominated when the weights favour one
+    objective.
+  </p>
+
+  <h2><span class="num">7</span>Monte Carlo simulation</h2>
+  <p>
+    For each route and trial: start from the scheduled transit time, draw a Bernoulli delay event with
+    the route's <code>delay_probability</code>, and if delayed add extra days from a bounded triangular
+    distribution with lower bound <code>0.5 × delay_impact_days</code>, mode
+    <code>delay_impact_days</code>, and upper bound <code>1.5 × delay_impact_days</code>. Defaults are
+    10,000 trials per route and seed 42. The <strong>triangular delay distribution is a modelling
+    assumption, not an empirically fitted carrier distribution</strong>: it encodes "delays are usually
+    near the stated impact, rarely much longer" and must be replaced with historical data before
+    operational use. Zero delay impact adds no days; a probability of 0 produces no events, a
+    probability of 1 delays every trial.
+  </p>
+  <p>
+    Each route gets an independent random stream spawned from the seed, so results are reproducible
+    without global random state and the input frame is not mutated. Outputs are mean and P50/P90/P95
+    transit time, on-time probability against the selected deadline (unavailable without one), mean
+    cost, and trial count. Cost is deterministic in the dashboard; the optional cost-variation API is
+    not exposed because the synthetic dataset gives no defensible estimate of cost variability.
+  </p>
+
+  <div class="foot"><span>SmartRoute AI · Technical Report</span><span>Page 2 of 3</span></div>
+</section>
+
+<!-- ============================ PAGE 3 ============================ -->
+<section class="page">
+  <h2><span class="num">8</span>Experimental results</h2>
+  <p>
+    All figures below come from the repository dataset and code: <strong>30 shipments, 4 candidate routes
+    each, 120 route options</strong>, generated with seed 42 and validated. The mean cheapest option per
+    shipment is $4,987.84; mean expected transit is 27.6 days and mean risk 28.3/100. Without
+    constraints, 22 shipments have all four options on the Pareto frontier, 7 have three, 1 has two.
+  </p>
+
+  <h3>Representative shipment: SHP-001, Mumbai → Rotterdam (Balanced, no constraints)</h3>
+  <p>
+    All four routes are feasible and Pareto-optimal, so the choice is decided by weights alone:
+  </p>
+  <table>
+    <tr><th>Route</th><th class="n">Cost</th><th class="n">Expected transit</th><th class="n">Risk</th><th class="n">Score</th><th class="n">Rank</th></tr>
+    <tr><td>Direct Express</td><td class="n">$4,043.71</td><td class="n">19.5 d</td><td class="n">41.9</td><td class="n">0.250</td><td class="n">1</td></tr>
+    <tr><td>Resilient Route</td><td class="n">$5,358.77</td><td class="n">19.6 d</td><td class="n">19.3</td><td class="n">0.409</td><td class="n">2</td></tr>
+    <tr><td>Economy Corridor</td><td class="n">$4,732.31</td><td class="n">23.0 d</td><td class="n">34.4</td><td class="n">0.571</td><td class="n">3</td></tr>
+    <tr><td>Regional Hub</td><td class="n">$4,830.55</td><td class="n">25.8 d</td><td class="n">25.9</td><td class="n">0.662</td><td class="n">4</td></tr>
+  </table>
+  <p>
+    Direct Express wins because it is the cheapest and fastest. Its high risk costs it the full 0.25
+    risk weight, but Resilient Route's 22.6-point risk advantage cannot recover the $1,315.06 price gap
+    under a 40% cost weight.
+  </p>
+  <p>
+    With a <strong>$5,200 budget and 24-day limit</strong> only Direct Express and Economy Corridor remain
+    feasible: Resilient Route fails the budget and Regional Hub the deadline (Figure 2). Direct Express
+    keeps rank 1, score 0.250 against 0.750. With a <strong>$1,000 budget</strong> every route fails; the
+    dashboard reports 0/4 feasible and names the budget as binding.
+  </p>
+
+  <figure class="figure">
+    <img src="screenshots/route-comparison-table.png" alt="Route comparison table with constraint status">
+    <figcaption>Figure 2. SHP-001 under a $5,200 budget and 24-day limit; infeasible routes keep no score or rank.</figcaption>
+  </figure>
+
+  <div class="cols">
+    <div>
+      <h3>Monte Carlo reliability — 10,000 trials, seed 42, deadline 21 days</h3>
+      <table>
+        <tr><th>Route</th><th class="n">Mean</th><th class="n">P50</th><th class="n">P90</th><th class="n">P95</th><th class="n">On-time</th></tr>
+        <tr><td>Direct Express</td><td class="n">19.5</td><td class="n">18.6</td><td class="n">21.5</td><td class="n">21.8</td><td class="n">77.7%</td></tr>
+        <tr><td>Resilient Route</td><td class="n">19.7</td><td class="n">19.3</td><td class="n">19.3</td><td class="n">23.9</td><td class="n">93.2%</td></tr>
+        <tr><td>Economy Corridor</td><td class="n">23.0</td><td class="n">20.7</td><td class="n">29.0</td><td class="n">29.9</td><td class="n">70.5%</td></tr>
+        <tr><td>Regional Hub</td><td class="n">25.8</td><td class="n">24.9</td><td class="n">30.1</td><td class="n">31.0</td><td class="n">0.0%</td></tr>
+      </table>
+    </div>
+    <div>
+      <h3>Sensitivity under the same deadline</h3>
+      <table>
+        <tr><th>Profile</th><th>Recommended</th><th class="n">Score</th></tr>
+        <tr><td>Cost focused</td><td>Direct Express</td><td class="n">0.100</td></tr>
+        <tr><td>Balanced</td><td>Direct Express</td><td class="n">0.250</td></tr>
+        <tr><td>Risk averse</td><td>Resilient Route</td><td class="n">0.350</td></tr>
+        <tr><td>Time critical</td><td>Direct Express</td><td class="n">0.150</td></tr>
+      </table>
+      <p class="note" style="font-size:8.4pt">
+        Hard constraints stay active in every profile.
+      </p>
+    </div>
+  </div>
+
+  <p>
+    This is where the deterministic winner is not the most reliable. Direct Express delays often (33.6%
+    of trials) but briefly, so its tail is thin. Resilient Route delays rarely (6.6%) but for longer — its
+    P50 equals the scheduled time while its P95 is 23.9 days. At a 21-day deadline the cheap route misses
+    22.3% of the time and the expensive route 6.8%; the dashboard shows that trade-off rather than hiding
+    it in a single score.
+  </p>
+  <p class="note" style="font-size:8.2pt">
+    Verification: <code>python -W error -m pytest -q</code> → 110 passed on Python 3.12.10. The dashboard
+    was exercised through Streamlit <code>AppTest</code> and captured from a headless Edge session.
+  </p>
+
+  <h2><span class="num">9</span>Limitations</h2>
+  <div class="lim">
+    <div><strong>Synthetic data.</strong> All costs, times, delay probabilities, congestion, and geopolitical values are generated for demonstration, not quotations or risk intelligence, and nothing validates that the risk score predicts real disruptions.</div>
+    <div><strong>Assumed delay model.</strong> The Bernoulli/triangular construction is a stated assumption, not a calibrated carrier distribution.</div>
+    <div><strong>Deterministic cost.</strong> Cost does not vary across trials in the dashboard, so probability-over-budget is not shown.</div>
+    <div><strong>No live integration.</strong> There are no carrier, weather, port, customs, or market feeds.</div>
+    <div><strong>Single-shipment scope.</strong> Scores normalize per shipment, so they are not comparable between shipments, and the optimizer does not allocate fleet capacity.</div>
+    <div><strong>Weighted sums and fixed risk weights.</strong> Pareto analysis and the four profiles make trade-offs visible, but the 45/30/25 split and the profile weights remain human judgement.</div>
+    <div><strong>No persistence.</strong> Settings reset with the session; there is no authentication or audit history.</div>
+  </div>
+
+  <h2><span class="num">10</span>Conclusion and future improvements</h2>
+  <p>
+    The implementation delivers a working, tested, reproducible prototype: validated synthetic data, an
+    explainable weighted optimizer with hard constraints and Pareto analysis, a reproducible Monte Carlo
+    layer with tail metrics, a four-tab dashboard, a CLI, and 110 automated tests. Every number in this
+    report regenerates from the repository. Production work would start with data, not features: calibrate
+    delay distributions and risk weights from historical shipments, connect carrier and port feeds with
+    provenance metadata, extend optimization to fleet-level allocation, validate any prediction model
+    before calling risk predictive, and add persistence, monitoring, and approval. None of these are
+    implemented today; they are the path from prototype to operational system.
+  </p>
+
+  <div class="foot"><span>SmartRoute AI · Technical Report</span><span>Page 3 of 3</span></div>
+</section>
+
+</body>
+</html>
